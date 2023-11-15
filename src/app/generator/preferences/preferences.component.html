@@ -1,0 +1,51 @@
+<section class="mt-12">
+<div *ngIf="students">
+    <h2 class="text-xl my-2 w-8/12 mx-auto">Les Préférences des Étudiants</h2>
+    <table class="table-fixed w-8/12 text-sm text-left rtl:text-right text-gray-500 mx-auto border">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+          <tr>
+            <th scope="col" class="px-6 py-3" >Etudiant</th>
+            <th scope="col" class="px-6 py-3">Préférences</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let student of students" class="bg-white border-b">
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ student.id }}</td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                    <span *ngFor="let preference of student.preferences">
+                        {{ preference }}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+</div>
+
+<div *ngIf="establishments">
+    <h2 class="text-xl mt-8 mb-2 w-8/12 mx-auto">Les Priorités des Établissements</h2>
+    <table class="table-fixed w-8/12 text-sm text-left rtl:text-right text-gray-500 mx-auto border">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50" >
+          <tr>
+            <th scope="col" class="px-6 py-3" >Etablissement</th>
+            <th scope="col" class="px-6 py-3" >Priorités</th>
+          </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let establishment of establishments" class="bg-white border-b">
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" >{{ establishment.id }}</td>
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" >
+                    <span *ngFor="let priorite of establishment.priorities">
+                        {{ priorite }}
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+      </table>
+</div>
+
+<div class="w-5/12 mx-auto">
+    <app-blue-button [class]="'mt-6 bg-green-600 hover:bg-green-700'" [label]="'Lancer l\'Algorithme'" (click)="onSubmit()"></app-blue-button>
+</div>
+</section>
