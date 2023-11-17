@@ -2,7 +2,7 @@
     <p class="max-w-3xl mx-auto text-justify border rounded-md p-4">
         L'algorithme du mariage stable est une méthode de mise en correspondance entre deux ensembles, ici les étudiants et les établissements, de sorte qu'il n'y ait personne qui souhaiterait échanger son partenaire pour un autre. 
     </p>
-    <app-form (numberSend)="setN($event)"></app-form>
+    <app-form (formValuesSend)="setSizeAndCaseOption($event)"></app-form>
     
     <ng-container *ngIf="students establishments">
         <app-preferences [establishments]="establishments" [students]="students"></app-preferences>

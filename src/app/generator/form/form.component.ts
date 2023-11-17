@@ -8,7 +8,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class FormComponent {
 
-  @Output() numberSend = new EventEmitter<number>();
+  @Output() formValuesSend = new EventEmitter<any>();
+
+  selectedOption: string = '';
 
   form !: FormGroup;
   submitted : boolean = false;
@@ -18,6 +20,7 @@ export class FormComponent {
   ngOnInit(){
     this.form = this.formBuilder.group({
       number: ['', [Validators.required, Validators.pattern('[0-9]*')]],
+      selectedOption: [this.selectedOption, Validators.required] 
     });
   }
 
@@ -25,15 +28,24 @@ export class FormComponent {
     return this.form.get('number');
   }
 
+  get selectedOptionControl() {
+    return this.form.get('selectedOption');
+  }
+
   onSubmit() {
     this.submitted = true;
     if (this.form.valid) {
       // Le formulaire est valide, vous pouvez soumettre les données
       console.log('Formulaire valide. Soumission des données...');
-
       const numberValue = this.form.get('number')?.value;
+      const caseValue = this.form.get('selectedOption')?.value;
 
-      this.numberSend.emit(numberValue);
+      const formValues = {
+        size: numberValue,
+        caseOption: caseValue
+      };
+
+      this.formValuesSend.emit(formValues);
 
     } else {
       // Le formulaire est invalide, affichez un message d'erreur ou prenez des mesures

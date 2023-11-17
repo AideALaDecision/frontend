@@ -18,13 +18,18 @@ export class PageComponent {
   constructor(private apiService : ApiService){}
 
   n !: number;
+  case !: number;
 
-  setN(n: number) {
-    this.n = n;
+  setSizeAndCaseOption(formValues: any) {
+    this.n = formValues.size;
+    this.case = formValues.caseOption;
     if(this.n){
       console.log(this.n);
-      this.apiService.getStudents().pipe(first()).subscribe( students => this.students = students);
-      this.apiService.getEstablishements().pipe(first()).subscribe( establishments => this.establishments = establishments);  
+      this.apiService.getStudentsAndEstablishements(this.n, this.case).pipe(first()).subscribe(data =>
+        {
+          this.students = data.students;
+          this.establishments = data.establishments;
+        });  
     }
   }
 

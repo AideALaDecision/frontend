@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import { Student } from '../interfaces/Student';
 import { Establishment } from '../interfaces/Establishment';
 import { Observable, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
+
+  private apiUrl = "http://localhost:8083/api";
 
   students : Student[] = [
     {
@@ -38,7 +41,7 @@ export class ApiService {
     }
   ];
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   getStudents() : Observable<Student[]> {
     return of(this.students);
@@ -46,6 +49,11 @@ export class ApiService {
 
   getEstablishements() : Observable<Establishment[]> {
     return of(this.establishments);
+  }
+
+  getStudentsAndEstablishements(size: number, caseId: number) : Observable<any> {
+    const url = `${this.apiUrl}/preferences?size=${size}&caseID=${caseId}`;
+    return this.http.get<any>(url);
   }
 
 }
