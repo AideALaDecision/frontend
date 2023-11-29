@@ -4,7 +4,12 @@
     </p>
     <app-form (formValuesSend)="setSizeAndCaseOption($event)"></app-form>
     
-    <ng-container *ngIf="students establishments">
-        <app-preferences [establishments]="establishments" [students]="students"></app-preferences>
+    <ng-container *ngIf="students && establishments">
+        <app-preferences [establishments]="establishments" [students]="students"
+                            (startAlgorithm)="startAffectationAlgorithm()"></app-preferences>
+    </ng-container>
+
+    <ng-container *ngIf="affectations && affectations.length > 0">
+        <app-affectations [affectations]="affectations" [students]="students" [establishments]="establishments"></app-affectations>
     </ng-container>
 </section>

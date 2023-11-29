@@ -4,7 +4,7 @@
     <table class="table-fixed w-8/12 text-sm text-left rtl:text-right text-gray-500 mx-auto border">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
           <tr>
-            <th scope="col" class="px-6 py-3" >Etudiant</th>
+            <th scope="col" class="px-6 py-3" >Étudiant</th>
             <th scope="col" class="px-6 py-3">Préférences</th>
           </tr>
         </thead>
@@ -12,7 +12,7 @@
         <tbody>
             <tr *ngFor="let student of students" class="bg-white border-b">
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{ student.id }}</td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap truncate">
                     <span *ngFor="let preference of student.preferences">
                         {{ preference }}
                     </span>
@@ -27,7 +27,7 @@
     <table class="table-fixed w-8/12 text-sm text-left rtl:text-right text-gray-500 mx-auto border">
         <thead class="text-xs text-gray-700 uppercase bg-gray-50" >
           <tr>
-            <th scope="col" class="px-6 py-3" >Etablissement</th>
+            <th scope="col" class="px-6 py-3" >Établissement</th>
             <th scope="col" class="px-6 py-3" >Priorités</th>
           </tr>
         </thead>
@@ -35,7 +35,7 @@
         <tbody>
             <tr *ngFor="let establishment of establishments" class="bg-white border-b">
                 <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" >{{ establishment.id }}</td>
-                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap" >
+                <td scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap truncate" >
                     <span *ngFor="let priorite of establishment.priorities">
                         {{ priorite }}
                     </span>

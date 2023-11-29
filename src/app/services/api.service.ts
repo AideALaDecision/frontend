@@ -3,13 +3,14 @@ import { Student } from '../interfaces/Student';
 import { Establishment } from '../interfaces/Establishment';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { Affectation } from '../interfaces/Affectation';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
 
-  private apiUrl = "http://localhost:8083/api";
+  private apiUrl = "http://localhost:8080/api";
 
   students : Student[] = [
     {
@@ -54,6 +55,11 @@ export class ApiService {
   getStudentsAndEstablishements(size: number, caseId: number) : Observable<any> {
     const url = `${this.apiUrl}/preferences?size=${size}&caseID=${caseId}`;
     return this.http.get<any>(url);
+  }
+
+  getAffectation() : Observable<Affectation[]> {
+    const url = `${this.apiUrl}/mariage`;
+    return this.http.get<Affectation[]>(url);
   }
 
 }

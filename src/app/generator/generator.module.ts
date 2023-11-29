@@ -5,6 +5,7 @@ import { FormComponent } from './form/form.component';
 import { PreferencesComponent } from './preferences/preferences.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlueButtonComponent } from './blue-button/blue-button.component';
+import { AffectationsComponent } from './affectations/affectations.component';
 
 
 
@@ -13,7 +14,8 @@ import { BlueButtonComponent } from './blue-button/blue-button.component';
     PageComponent,
     FormComponent,
     PreferencesComponent,
-    BlueButtonComponent
+    BlueButtonComponent,
+    AffectationsComponent
   ],
   imports: [
     CommonModule,

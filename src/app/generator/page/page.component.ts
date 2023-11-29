@@ -3,6 +3,7 @@ import { Establishment } from 'src/app/interfaces/Establishment';
 import { Student } from 'src/app/interfaces/Student';
 import { ApiService } from 'src/app/services/api.service';
 import { Observable, first } from 'rxjs';
+import { Affectation } from 'src/app/interfaces/Affectation';
 
 @Component({
   selector: 'app-page',
@@ -13,6 +14,7 @@ export class PageComponent {
 
   students !: Student[];
   establishments !: Establishment[];
+  affectations !: Affectation[];
   
 
   constructor(private apiService : ApiService){}
@@ -31,6 +33,13 @@ export class PageComponent {
           this.establishments = data.establishments;
         });  
     }
+  }
+
+  startAffectationAlgorithm(){
+    this.apiService.getAffectation().pipe(first()).subscribe(affectations => {
+      this.affectations=affectations;
+      console.log(this.affectations);
+    });
   }
 
 }

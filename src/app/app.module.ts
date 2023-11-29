@@ -4,7 +4,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GeneratorModule } from './generator/generator.module';
-import { AlgorithmeModule } from './algorithme/algorithme.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -15,8 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    GeneratorModule,
-    AlgorithmeModule
+    GeneratorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
